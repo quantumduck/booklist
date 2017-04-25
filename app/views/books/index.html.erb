@@ -1,1 +1,13 @@
-<%= @books %>
+<h1>OMG!! BOOOOOKS!!!1</h1>
+<table>
+<tr>
+  <th>Title</th><th>Author</th><th>Read?</th>
+</tr>
+<% @books.each do |book| %>
+  <tr>
+    <td><%= book.title %></td><td><%= book.author %></td>
+    <td><% if book.already_read %><%= "Yes" %><% else %><%= "No" %><% end %></td>
+  </tr>
+<% end %>
+
+</table>
