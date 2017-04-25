@@ -1,0 +1,33 @@
++------------------+
+|OMG!! BOOOOOKS!!!1|
++------------------+
+
+<% max_title = @books.map { |b| b.title.length }.max
+   max_author = @books.map { |b| b.author.length }.max
+%>
+
++<%= row = ''; max_title.times { row += '-' }; row %>+<%= row = ''; max_author.times { row += '-' }; row %>+-----+
+|Title <%= row = ''; (max_title - 6).times { row += ' ' }; row %>|Author <%= row = ''; (max_author - 7).times { row += ' ' }; row %>|Read?|
++<%= row = ''; max_title.times { row += '-' }; row %>+<%= row = ''; max_author.times { row += '-' }; row %>+-----+
+<%= table_rows = "|"
+    @books.each do |book|
+      table_rows += book.title
+      (max_title - book.title.length).times do
+        table_rows += ' '
+      end
+      table_rows += '|'
+      table_rows += book.author
+      (max_author - book.author.length).times do
+        table_rows += ' '
+      end
+      table_rows += '|'
+      if book.already_read
+        table_rows += "Yes  "
+      else
+        table_rows += "No   "
+      end
+      table_rows += "|\n|"
+    end
+    table_rows = table_rows[0, table_rows.length - 2]
+%>
++<%= row = ''; max_title.times { row += '-' }; row %>+<%= row = ''; max_author.times { row += '-' }; row %>+-----+
